@@ -1,0 +1,133 @@
+:root {
+  --color-grey: #999;
+  --color-light-grey: #eee;
+  --color-blue-grey: #789;
+  --color-blue-grey-dark: #456;
+  --color-blue-grey-bright: #abc;
+  --color-blue-grey-very-bright: #def;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-red: #f00;
+  --panel-width: 20rem;
+}
+
+body,
+html {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  font-size: 1vw !important;
+  line-height: 1.5vw !important;
+}
+
+h1,
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+h4 {
+  margin: 0.5rem;
+}
+
+h5 {
+  color: var(--color-blue-grey);
+  margin: 1rem 0 0.25rem 0;
+  font-size: 1em;
+}
+
+h6 {
+  margin: 0 0 0 -1rem;
+  padding-bottom: 0.5rem;
+  font-weight: normal;
+}
+
+button {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-blue-grey);
+  color: var(--color-blue-grey);
+  margin: 1rem 0 1rem 0;
+  line-height: 2rem;
+  min-width: 2.5rem;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+button:disabled {
+  border-color: var(--color-grey);
+  color: var(--color-grey); 
+  pointer-events: none;
+}
+
+button:hover {
+  cursor: pointer;
+  border-color: var(--color-blue-grey-dark);
+  color: var(--color-blue-grey-dark);
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.key-value {
+  display: flex;
+  justify-content: space-between;
+}
+
+.key-value span[id] {
+  font-weight: 700;
+  color: var(--color-blue-grey);
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: small;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.routing-control {
+    background-color: #ffffff;
+    width: 250px;
+    padding: 0 10px 10px 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.summary-control {
+    background-color: #ffffff;
+    width: 200px;
+    min-height: 60px;
+    padding: 0 10px 10px 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.banner {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+  background-color: #ffffff;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.banner p {
+  margin-block: 5px;
+}

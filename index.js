@@ -313,6 +313,13 @@ function addSummaryControl() {
 }
 
 $(document).ready(function() {
+    //Lazy load the plugin to support right-to-left languages such as Arabic and Hebrew.
+    maplibregl.setRTLTextPlugin(
+        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js',
+        null,
+        true 
+    );
+    
     map = new L.Map('map', {
         center: L.latLng(49, 8.4),
         zoom: 13,
@@ -323,16 +330,26 @@ $(document).ready(function() {
         position: 'bottomright'
     }).addTo(map);
 
-    const tileLayer = new L.tileLayer(
-        "https://api.myptv.com/rastermaps/v1/image-tiles/{z}/{x}/{y}?size={tileSize}",
-        {
-          attribution: '© ' + new Date().getFullYear() + ', PTV Group, HERE',
-          tileSize: 256,
-          trackResize: false
-        },
-        [
-          {header: 'ApiKey', value: api_key}
-        ]).addTo(map);
+    var vectorStyleUrl = "https://vectormaps-resources.myptv.com/styles/latest/standard.json";
+
+    const tileLayer = new L.maplibreGL({
+        attribution: '&copy; ' + new Date().getFullYear() + ' PTV Group, HERE',
+        interactive:false,
+        maxZoom: 18,
+        style: vectorStyleUrl,
+        transformRequest: (url) => {
+          let transformedUrl = url;
+          let mapsPathIndex = url.indexOf('/maps/');
+      
+          if (mapsPathIndex > 0) {
+            transformedUrl = 'https://api.myptv.com/' + url.substring(mapsPathIndex) + '?apiKey=' + api_key;
+            return {
+              url: `${transformedUrl}`
+            };
+          } 
+          return null;
+        }
+    }).addTo(map);
     map.on('click', onMapClick);
     map.on('contextmenu', OnMapContextMenu);
     map.on('mousemove', onMouseMove);

@@ -323,6 +323,7 @@ $(document).ready(function() {
     map = new L.Map('map', {
         center: L.latLng(49, 8.4),
         zoom: 13,
+        maxZoom: 18,
         zoomControl: false
     });
 

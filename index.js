@@ -146,7 +146,7 @@ async function calculateRoute() {
 }
 
 function getQuery(waypoints, addBlockIntersectingRoads) {
-    let query = '?results=POLYLINE';
+    let query = '?results=POLYLINE&options[polylineMapType]=VECTOR';
     waypoints.forEach((waypoint) => {
         query += '&waypoints=' + waypoint.lat + ',' + waypoint.lng;
     });
@@ -334,7 +334,7 @@ $(document).ready(function() {
     var vectorStyleUrl = "https://vectormaps-resources.myptv.com/styles/latest/standard.json";
 
     const tileLayer = new L.maplibreGL({
-        attribution: '&copy; ' + new Date().getFullYear() + ' PTV Group, HERE',
+        attribution: '&copy; ' + new Date().getFullYear() + ' PTV Logistics, HERE',
         interactive:false,
         maxZoom: 18,
         style: vectorStyleUrl,
